@@ -1,0 +1,9 @@
+.image-card {
+    background-color: #B76E79;
+    padding: 1%;
+    margin-bottom: 4%;
+    width: 40%;
+    align-items: center;
+    display: flex;
+    border-radius: 50%;
+}

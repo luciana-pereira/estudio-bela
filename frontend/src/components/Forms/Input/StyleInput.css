@@ -1,0 +1,143 @@
+.wrapper {
+  margin-bottom: 1rem;
+}
+
+.input {
+  border: 1px solid #eee;
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  background: #eee;
+  transition: 0.2s;
+}
+
+.input:focus,
+.input:hover {
+  outline: none;
+  border-color: #fb1;
+  background: white;
+  box-shadow: 0 0 0 3px #fea;
+}
+
+.label {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding-bottom: 0.5rem;
+}
+
+/* Login */
+div label.label-login {
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 22px;
+  color: #ffffff;
+  display: block;
+}
+  
+div input.input-login {
+  padding: 14px 20px;
+  border: 1px solid #E8E8E8;
+  /* border-radius: 5px; */
+  font-size: 1.2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-container input {
+  width: 100%;
+  padding-right: 40px;
+  padding-left: 10px;
+  height: 40px;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  /* border-radius: 5px; */
+}
+
+.input-container .icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+.input-container input:focus + .icon {
+  color: #000;
+}
+  
+/* Mensagem de erro do input */
+.error {
+  color: #f31;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* .color-background {
+  background: #F88441;
+  width: 36vw;
+  position: relative;
+} */
+  
+/* .color-background h1 {
+  font-weight: 800;
+  font-size: 2rem;
+} */
+
+.text-register h2 {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 15px;
+}
+
+.form-container-register {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media (max-width: 767px) {
+  .form-container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      justify-content: center;
+      align-items: stretch;
+      flex-direction: column;
+  }
+  
+  .img-container, .form-content {
+      width: 100%;
+  }
+  
+  .img-login-container {
+      display: none;
+  }
+  
+  .form > div {
+      width: 100%;
+  }
+
+  .color-background {
+    display: none;
+  }
+
+  .login-container.register {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+}

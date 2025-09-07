@@ -1,0 +1,106 @@
+/* Login */
+.form > div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Login */
+
+
+.img-login-container {
+    justify-content: center;
+    align-items: center;
+}
+
+img.img-login {
+    width: 40vh;
+    border-radius: 90px; 
+}
+
+.form-title-login {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 32px;
+    align-items: center;
+    color: #05010d;
+    margin-bottom: 50px;
+}
+
+.text-login p {
+    color: #454545;
+}
+
+.lost-password {
+    font-size: 14px;
+}
+
+.lost-password, .login-container{
+    display: flex;
+    /* margin-top: 1rem;
+    margin-bottom: 6px; */
+}
+
+.login-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.text-size > p {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.text-login {
+    display: flex;
+    font-size: 14px;
+}
+
+p , .text-login > p {
+   /* margin-right: 5px;*/
+}
+
+.form-privacy-policy > b {
+    color: #B76E79 !important;
+}
+
+label {
+    text-align: start;
+}
+
+.radio-group {
+    margin-top: 20px !important;
+}
+
+.form-privacy-policy {
+    display: flex;
+    flex-direction: row !important;
+    margin-top: 5px;
+}
+
+p.text-alert {
+    color: red;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.link-login {
+    color: #B76E79;
+}
+
+label#demo-row-radio-buttons-group-label {
+    padding-top: 3.5%;
+    font-size: 12px;
+}
+
+label#demo-row-radio-buttons-group-label > b {
+    color: #B76E79;
+}
+
+.css-j204z7-MuiFormControlLabel-root, .MuiFormControlLabel-label, .css-u4tvz2-MuiFormLabel-root {
+    font-size: 12px !important;
+}

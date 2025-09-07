@@ -1,0 +1,12 @@
+img.image-container-navbar {
+  padding: 10px;
+  width: 100px;
+  height: 'auto';
+}
+  
+@media (max-width: 600px) {
+  .image-container-navbar {
+    display: none;
+  }
+}
+  

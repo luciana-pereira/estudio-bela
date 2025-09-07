@@ -1,0 +1,43 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    gap: 8px; 
+    flex-wrap: nowrap;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+footer b {
+  font-weight: bold;
+  color: #ad8e7a;
+}
+
+.footer-logo {
+  width: 100px;
+}
+
+@media (max-width: 768px) {
+  footer p {
+    font-size: 1rem;
+  }
+  
+  footer {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  footer p {
+    font-size: 0.9rem;
+  }
+  
+  footer {
+    padding: 6px;
+  }
+}

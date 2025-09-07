@@ -1,0 +1,37 @@
+.btn-search,
+.btn-container {
+    background: #B76E79;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-disable {
+    background: #d6dbef;
+    border: none;
+    cursor: not-allowed !important;
+}
+
+.btn-disable, 
+.btn-search,
+.btn-container {
+    margin-top: 20px;
+    text-align: center;
+    padding: 0.7rem ;
+    border-radius: 0px !important;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+}
+
+.btn-search:hover,
+.btn-container:hover {
+    background: #d7828f;
+    color: #FFFFFF;
+    border: none;
+}
+
+.btn-disable:hover {
+    border: none;
+    cursor: not-allowed !important;
+}

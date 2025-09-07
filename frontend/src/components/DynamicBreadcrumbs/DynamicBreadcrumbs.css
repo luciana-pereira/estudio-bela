@@ -1,0 +1,25 @@
+.custom-link-breadcrumbs {
+    text-decoration: none;
+    display: block;
+    /* font-size: 0.8rem; */
+    color: rgb(49, 48, 48);
+    word-break: break-word;
+    max-width: 100%;
+}
+
+.custom-link-breadcrumbs:hover {
+    text-decoration: underline; 
+    color: #9e6069
+}
+
+@media (max-width: 600px) {
+    .custom-link-breadcrumbs {
+    /* font-size: 0.7rem; */
+    }
+}
+
+@media (max-width: 400px) {
+    .custom-link-breadcrumbs {
+    /* font-size: 0.6rem; */
+    }
+}

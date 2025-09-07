@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+.home-page {
+  max-width: 100% !important;
+  padding: 0px !important;
+  overflow-x: hidden;
+}
+
+.section {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image-container-home {
+  width: 30%;
+  height: 30%;
+}
+
+.image-section-one {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.responsive-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  color: #B76E79;
+  text-align: center;
+}
+
+.responsive-subtitle {
+  font-family: 'Poppins', sans-serif;
+  color: #B76E79;
+  text-align: center;
+}
+
+.responsive-paragraph {
+  font-style: italic;
+  text-align: center;
+}
+
+.presentation-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-container-navbar {
+  padding: 10px;
+  width: 200px;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .presentation-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .image-section-one {
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .responsive-title {
+    font-size: 2.5rem;
+  }
+  .responsive-subtitle {
+    font-size: 1.2rem;
+  }
+  .responsive-paragraph {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  .responsive-title {
+    font-size: 3.5rem;
+  }
+  .responsive-subtitle {
+    font-size: 1.8rem;
+  }
+  .responsive-paragraph {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .responsive-title {
+    font-size: 5rem;
+  }
+  .responsive-subtitle {
+    font-size: 2.5rem;
+  }
+  .responsive-paragraph {
+    font-size: 1.1rem;
+  }
+}
+
+.items-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,20 @@
+/* Links - Cadastre-se e Perdeu a senha */
+.custom-link {
+  text-decoration: none;
+  margin-top: 20px;
+  display: block;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.custom-link:hover {
+  color: #c2b0b3;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  .custom-link {
+    font-size: 0.9rem;
+    margin-top: 16px;
+  }
+}
