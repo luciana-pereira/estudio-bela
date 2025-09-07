@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  user-management:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./test.db
+      - SECRET_KEY=your_secret_key
+      - ALGORITHM=HS256
