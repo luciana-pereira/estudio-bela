@@ -30,7 +30,7 @@ Para rodar o projeto, siga os passos abaixo:
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/luciana-pereira/pi-espaco-bela.git
+   git clone https://github.com/luciana-pereira/estudio-bela.git
    
 2. Navegue até o diretório do projeto:
 

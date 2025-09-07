@@ -1,18 +1,12 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
-import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
+import { createTheme, styled } from "@mui/material/styles";
 import Button, { ButtonProps } from "@mui/material/Button";
-import { blue } from "@mui/material/colors";
-import Logo from "../../assets/img/logo-m.png";
-import { Box, Typography, IconButton, Link } from '@mui/material';
-import { Facebook, Twitter, Instagram, Search, ShoppingBag } from '@mui/icons-material';
+import { Box, Typography, IconButton } from '@mui/material';
+import { Facebook, Twitter, Instagram } from '@mui/icons-material';
 import "./NavBar.css";
 import HeaderBar from "../HeaderBar/HeaderBar";
 
@@ -85,19 +79,6 @@ const NavBar: React.FC = () => {
   return (
     <Box>
       <Box>
-        {/* <Box sx={{display: 'flex', justifyContent: "space-between", px: 5, pt: 2, color: "#5f3d41" }}> 
-          <Box display="flex" gap={1} >
-            <Typography fontSize="0.9rem">info@Espaco-Belaweb.com</Typography>
-          </Box>
-          <Box>
-          <Box display="flex" alignItems="center" gap={2}>
-            <Typography fontSize="0.9rem">Av. Paulista, 1002 - Bela Vista</Typography>
-            <Search />
-            <ShoppingBag />
-          </Box>
-          </Box>
-        </Box> */}
-        {/* Criar logica para identificar se o usuario esta logado e passar como propriedade */}
         <HeaderBar isLoggedIn={false} /> 
         <Box
           sx={{
@@ -198,7 +179,6 @@ const NavBar: React.FC = () => {
         </Box>
         
       </Box>
-
 
     </Box>
   );

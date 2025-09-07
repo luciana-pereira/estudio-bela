@@ -1,12 +1,12 @@
 import { useState, forwardRef } from "react";
 import Input from '../../components/Forms/Input/Input';
 import Button, { ButtonProps } from "@mui/material/Button";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import { blue } from "@mui/material/colors";
-import LogoEstudioBela from '../../assets/img/logo-branca-espaco-bela.png';
+import LogoEstudioBela from '../../assets/img/logo-branca-estudio-bela.png';
 import Ilustration from '../../assets/img/img-login.png';
 import { styled } from "@mui/material/styles";
 import DynamicBreadcrumbs from "../../components/DynamicBreadcrumbs/DynamicBreadcrumbs";

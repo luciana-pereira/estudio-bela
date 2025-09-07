@@ -1,20 +1,17 @@
-import { useState, forwardRef } from "react";
-import { Controller, useForm, useWatch } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import DynamicBreadcrumbs from "../../components/DynamicBreadcrumbs/DynamicBreadcrumbs";
 import Input from '../../components/Forms/Input/Input';
 import Button, { ButtonProps } from "@mui/material/Button";
-// import Button from "../../components/Forms/Button/Button";
 import { 
   Box, 
   Typography,
-  TextField, 
   FormGroup, 
   FormControlLabel, 
   Checkbox, 
   styled 
 } from "@mui/material";
 import Ilustration from '../../assets/img/img-register.png';
-import LogoEstudioBela from '../../assets/img/logo-branca-espaco-bela.png';
+import LogoEstudioBela from '../../assets/img/logo-branca-estudio-bela.png';
 
 const Register = () => {
 
@@ -197,7 +194,6 @@ const Register = () => {
             }}
           />    
 
-
           <Controller 
             name='dateOfBirth'
             control={control}
@@ -271,7 +267,6 @@ const Register = () => {
               )
             }}
           />  
-
 
           <FormGroup sx={{ mt: 0.2, mb: 1 }}>
             <FormControlLabel 

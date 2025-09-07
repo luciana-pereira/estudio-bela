@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, List, ListItem } from '@mui/material'
-import Logo from "../../assets/img/logo-branca-espaco-bela.png";
+import Logo from "../../assets/img/logo-branca-estudio-bela.png";
 
 
 const FooterSection = () => {

@@ -16,7 +16,7 @@ import {
   CssBaseline,
 } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
+import { LocalizationProvider } from "@mui/x-date-pickers";
 import Sidebar from "../components/Sidebar/Sidebar";
 import ConfirmationModal from "../components/Modal/ConfirmationModal";
 import DashboardAppBar from "../components/DashboardAppBar/DashboardAppBar";
@@ -267,12 +267,12 @@ const handleAgendar = () => {
                         </Grid>
                     )}
 
-{dataSelecionada && (
+            {dataSelecionada && (
               <Grid size={{ xs: 12 }}>
                 {horariosFiltrados.length > 0 ? (
                   <Card>
                     <CardContent>
-                      <Typography variant="h6">Hor√°rios dispon√≠veis:</Typography>
+                      <Typography variant="h6">Hor·rios disponÌveis:</Typography>
                       <Box display="flex" flexWrap="wrap" gap={1} mt={2}>
                         {horariosFiltrados.map((horario) => (
                           <Button

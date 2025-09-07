@@ -1,4 +1,4 @@
-# Espaço Bela 
+# Estúdio Bela
 
 [![React](https://img.shields.io/badge/React-17.0.2-blue?logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.9-blue?logo=typescript)](https://www.typescriptlang.org/)
@@ -43,9 +43,9 @@ O **Estúdio Bela** é uma plataforma web desenvolvida como parte do Projeto Int
 ---
 
 ## 📂 Estrutura do Projeto
- 
+
    ```bash
-  pi-espaco-bela/
+  estudio-bela/
   ├── frontend/     # Código do front-end em React.js
   ├── backend/      # Código do back-end em Python
   ├── .hintrc       # Configuração de linting
@@ -56,8 +56,8 @@ O **Estúdio Bela** é uma plataforma web desenvolvida como parte do Projeto Int
 
 ### Front-end e Back-end
 Para a instalação de dependências e execução:
-- Front-end: [Documentação](https://github.com/luciana-pereira/pi-espaco-bela/blob/master/frontend/README.md)
-- Back-end:  [Documentação](https://github.com/luciana-pereira/pi-espaco-bela/blob/master/backend/README.md).
+- Front-end: [Documentação](https://github.com/luciana-pereira/estudio-bela/blob/master/frontend/README.md)
+- Back-end:  [Documentação](https://github.com/luciana-pereira/estudio-bela/blob/master/backend/README.md).
 
 ## 🤝 Contribuição
 Contribuições são bem-vindas! 
@@ -66,7 +66,7 @@ Siga os passos abaixo para colaborar:
 1. Fork este repositório
 
     ```bash
-    https://github.com/luciana-pereira/pi-espaco-bela/fork
+    https://github.com/luciana-pereira/estudio-bela/fork
 
 2. Crie uma branch com sua feature:
 
@@ -86,7 +86,7 @@ Siga os passos abaixo para colaborar:
 5. Abra um Pull Request
 
 ## 📄 Licença
-Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](https://github.com/luciana-pereira/pi-espaco-bela/blob/master/backend/LICENSE) para mais detalhes.
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](https://github.com/luciana-pereira/estudio-bela/blob/master/backend/LICENSE) para mais detalhes.
 
 ## 👩‍💻👨‍💻 Equipe :octocat:
 Esta aplicação foi desenvolvida por:

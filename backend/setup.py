@@ -3,10 +3,10 @@ from setuptools import setup, find_packages
 setup(
     name="backend",
     version="0.1.0",
-    description="Microserviço de gerenciamento de usuários para a aplicação Espaço Bela",
+    description="Microserviço de gerenciamento de usuários para a aplicação Estúdio Bela",
     author="Luciana Pereira",
     author_email="luci.lv14@gmail.com",
-    url="https://github.com/luciana-pereira/pi-espaco-bela",  
+    url="https://github.com/luciana-pereira/estudio-bela",  
     packages=find_packages(),
     include_package_data=True,
     install_requires=[

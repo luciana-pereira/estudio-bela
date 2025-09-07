@@ -56,7 +56,7 @@ const HeaderBar = ({ isLoggedIn }: HeaderBarProps) => {
       >
         {/* Esquerda */}
         <Box display="flex" gap={1}>
-          <Typography fontSize="0.9rem">info@Espaco-Belaweb.com</Typography>
+          <Typography fontSize="0.9rem">info@EstudioBela.com</Typography>
         </Box>
 
         {/* Direita */}
