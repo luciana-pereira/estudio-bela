@@ -50,7 +50,7 @@ O **Estúdio Bela** é uma plataforma web desenvolvida como parte do Projeto Int
   ├── backend/      # Código do back-end em Python
   ├── .hintrc       # Configuração de linting
   └── README.md       
-
+```
 
 ## 🚀 Instalação
 
