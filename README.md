@@ -57,12 +57,17 @@ O **Estúdio Bela** é uma plataforma web desenvolvida como parte do Projeto Int
 ### Front-end e Back-end
 Para a instalação de dependências e execução:
 - Front-end: [Documentação](https://github.com/luciana-pereira/pi-espaco-bela/blob/master/frontend/README.md)
-- Back-end: [Documentação](https://github.com/luciana-pereira/pi-espaco-bela/blob/master/backend/README.md).
+- Back-end:  [Documentação](https://github.com/luciana-pereira/pi-espaco-bela/blob/master/backend/README.md).
 
 ## 🤝 Contribuição
 Contribuições são bem-vindas! 
 Siga os passos abaixo para colaborar:
+
 1. Fork este repositório
+
+    ```bash
+    https://github.com/luciana-pereira/pi-espaco-bela/fork
+
 2. Crie uma branch com sua feature:
 
     ```bash
