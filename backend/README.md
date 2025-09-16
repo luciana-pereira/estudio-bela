@@ -53,7 +53,7 @@ Para rodar o projeto, siga os passos abaixo:
 5. Se já tiver criado o ambiente, acesse:
 
    ```bash
-   .\venv\Scripts\activate
+   . venv/Scripts/activate
 
 6. Instale as dependencias:
 
