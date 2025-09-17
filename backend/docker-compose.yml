@@ -6,6 +6,6 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=sqlite:///./test.db
-      - SECRET_KEY=your_secret_key
+      - DATABASE_URL=postgresql://db_estudio_bela_user:dRCC28Iyvz6TqS7gAW48u38H97PqhyKj@dpg-d34ujohr0fns73bl94p0-a.oregon-postgres.render.com/db_estudio_bela
+      - SECRET_KEY=rnd_1niMEvyh72iEGT4gxhMLhFFOIn12
       - ALGORITHM=HS256
