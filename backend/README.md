@@ -63,7 +63,7 @@ Para rodar o projeto, siga os passos abaixo:
 7. Rode a aplicação localmente:
    
    ```bash
-   python main.py
+   python3 -m app.main
 
 
 ## Funcionalidades
