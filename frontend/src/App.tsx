@@ -14,7 +14,6 @@ import FinancialReport from './pages/FinancialReport/FinancialReport';
 import ProfessionalSchedule from './pages/ProfessionalSchedule';
 import RegisterProfessional from './pages/RegisterProfessional';
 import StockControl from './pages/StockControl';
-
 function App() {
   return (
     <div className="App">

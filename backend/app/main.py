@@ -36,4 +36,4 @@ app.include_router(auth_routes.router, prefix="/auth", tags=["auth"])
 
 @app.get("/")
 def read_root():
-    return {"message": "API Espaço Bela está funcionando!"}
+    return {"message": "API Estúdio Bela está funcionando!"}
