@@ -12,3 +12,37 @@ body {
 code {
   font-family: "Poppins", sans-serif;
 }
+/* -- Fontes -- */
+body.font-large {
+  font-size: 115%; /* Aumenta todo o texto do site */
+}
+body.font-small {
+  font-size: 90%; /* Diminui todo o texto do site */
+}
+body.readable-font {
+  /* Você precisará importar esta fonte no seu projeto, se quiser usá-la */
+  font-family: 'OpenDyslexic', Arial, sans-serif !important; 
+}
+
+/* -- Cores e Contraste -- */
+body.grayscale {
+  filter: grayscale(100%);
+}
+body.high-contrast {
+  background-color: #000 !important;
+  color: #FFF !important;
+}
+/* No alto contraste, força links e botões a terem estilos visíveis */
+body.high-contrast a, 
+body.high-contrast button {
+  color: #FFFF00 !important; /* Amarelo brilhante */
+  border: 1px solid #FFFF00 !important;
+}
+body.negative-contrast {
+  filter: invert(100%) hue-rotate(180deg);
+}
+
+/* -- Links -- */
+body.links-underline a {
+  text-decoration: underline !important;
+}

@@ -14,11 +14,14 @@ import FinancialReport from './pages/FinancialReport/FinancialReport';
 import ProfessionalSchedule from './pages/ProfessionalSchedule';
 import RegisterProfessional from './pages/RegisterProfessional';
 import StockControl from './pages/StockControl';
+import React from 'react';
+import AccessibilityMenu from './components/AccessibilityMenu'; 
 function App() {
   return (
     <div className="App">
       <Provider store={store}>
         <BrowserRouter>
+        <AccessibilityMenu />
           <Routes>
             <Route path="/inicio" element={<Home />} />
             <Route path="/inicio/login" element={<Login />} />
