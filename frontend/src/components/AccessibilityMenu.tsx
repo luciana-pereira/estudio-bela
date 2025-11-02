@@ -12,14 +12,14 @@ export default function AccessibilityMenu() {
 
   const handleIncreaseFont = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    document.body.classList.remove('font-small');
-    document.body.classList.add('font-large');
+    document.documentElement.classList.remove('font-small');
+    document.documentElement.classList.add('font-large');
   };
 
   const handleDecreaseFont = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    document.body.classList.remove('font-large');
-    document.body.classList.add('font-small');
+    document.documentElement.classList.remove('font-large');
+    document.documentElement.classList.add('font-small');
   };
 
   const handleGrayscale = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -44,19 +44,25 @@ export default function AccessibilityMenu() {
 
   const handleReadableFont = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    document.body.classList.toggle('readable-font');
+    document.documentElement.classList.toggle('readable-font');
   };
 
   const handleReset = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    document.body.classList.remove(
+    
+    // Reset das classes de FONTE e LEITURA no <html>
+    document.documentElement.classList.remove(
       'font-large', 
-      'font-small', 
+      'font-small',
+      'readable-font' 
+    );
+    
+    // Reset das classes de FILTRO/COR no <body>
+    document.body.classList.remove(
       'grayscale', 
       'high-contrast', 
       'negative-contrast', 
-      'links-underline', 
-      'readable-font'
+      'links-underline'
     );
   };
 
