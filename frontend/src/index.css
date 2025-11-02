@@ -49,16 +49,27 @@ html.readable-font * {
 body.grayscale {
   filter: grayscale(100%);
 }
-body.high-contrast {
+body.high-contrast * {
   background-color: #000 !important;
   color: #FFF !important;
+  border-color: #FFF !important; /* Garante que bordas também mudem */
 }
 /* No alto contraste, força links e botões a terem estilos visíveis */
-body.high-contrast a, 
-body.high-contrast button {
-  color: #FFFF00 !important; /* Amarelo brilhante */
+body.high-contrast a,
+body.high-contrast button,
+body.high-contrast svg {
+  background-color: transparent !important; /* Remove o fundo preto de botões/links */
+  color: #FFFF00 !important; /* Cor de destaque amarela */
   border: 1px solid #FFFF00 !important;
 }
+
+/* * REGRA 3: Garante que imagens fiquem visíveis (opcional, mas recomendado)
+ * O 'filter' vai inverter as cores da imagem, o que ajuda na visualização.
+*/
+body.high-contrast img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 body.negative-contrast {
   filter: invert(100%) hue-rotate(180deg);
 }
