@@ -8,6 +8,7 @@
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](#) <!-- Substitua # pelo link do  CI/CD depois -->
 
 
+
 O **Estúdio Bela** é uma plataforma web desenvolvida como parte do Projeto Integrador da **Univesp**, voltada para oferecer um ecossistema digital completo, seguro e modular.
 
 ---
