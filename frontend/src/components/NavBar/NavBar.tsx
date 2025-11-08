@@ -136,7 +136,7 @@ const NavBar: React.FC = () => {
               <ButtonLogin variant="outlined" onClick={handleLoginClick}>
                 Entrar
               </ButtonLogin>
-              <ButtonRegister variant="contained" onClick={handleRegisterClick}>
+              <ButtonRegister aria-label="Botão de Cadastro" variant="contained" onClick={handleRegisterClick}>
                 Cadastrar
               </ButtonRegister>
             </Box>

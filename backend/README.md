@@ -53,7 +53,7 @@ Para rodar o projeto, siga os passos abaixo:
 5. Se já tiver criado o ambiente, acesse:
 
    ```bash
-   .\venv\Scripts\activate
+   . venv/Scripts/activate
 
 6. Instale as dependencias:
 
@@ -63,7 +63,7 @@ Para rodar o projeto, siga os passos abaixo:
 7. Rode a aplicação localmente:
    
    ```bash
-   python main.py
+   python3 -m app.main
 
 
 ## Funcionalidades

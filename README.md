@@ -86,6 +86,11 @@ Siga os passos abaixo para colaborar:
 
 5. Abra um Pull Request
 
+6. Baixe as dependencias do projeto:
+
+    ```bash
+    yarn
+
 ## 📄 Licença
 Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](https://github.com/luciana-pereira/estudio-bela/blob/master/backend/LICENSE) para mais detalhes.
 

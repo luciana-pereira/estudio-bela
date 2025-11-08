@@ -42,10 +42,17 @@ Para rodar o projeto, siga os passos abaixo:
    ```bash
    yarn install
 
-4. Rode a aplicação localmente:
+4. Rode a aplicação localmente com o comando abaixo, desta forma qual quer nova atualização ou estilização podera ser vista facilmente com a aplicação rodando:
    
    ```bash
    yarn start
+
+5. Quando tivemos arquivos de teste (.test.tsx) executaremos os testes com o comando abaixo:
+
+   ```bash
+   yarn test
+
+Este comando acima, verificara cada bloco de teste dentro arquivo e valida como FAIL ou SUCESS, para indicar se deu certo ou não.
 
 <!-- ## Configuração -->
 
