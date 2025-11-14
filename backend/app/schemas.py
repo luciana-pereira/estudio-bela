@@ -1,7 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional
 
-
 class User(BaseModel):
     id: int
     username: str
@@ -42,7 +41,6 @@ class Token(BaseModel):
     access_token: str
     token_type: str
 
-    
 class ResetPassword(BaseModel):
     email: EmailStr
     new_password: str
