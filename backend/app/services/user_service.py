@@ -4,15 +4,20 @@ from app.models.user import User
 from app.models.role import Role
 from app.utils import get_password_hash
 
+MAX_PASSWORD_LENGTH = 72
+
 def create_user(db: Session, user: UserCreate):
     role = db.query(Role).filter(Role.id == user.role).first()
     if not role:
         raise ValueError("Role not found")
+
+    password = user.password[:MAX_PASSWORD_LENGTH]  
+    hashed_password = get_password_hash(password)
     
     db_user = User(
         username=user.username,
         email=user.email,
-        hashed_password=get_password_hash(user.password),
+        hashed_password=hashed_password,
         role_id=role.id,
         name=user.name
     )
@@ -51,3 +56,4 @@ def assign_role_to_user(db: Session, user_id: int, role_id: int):
         db.commit()
         db.refresh(user)
     return user
+
