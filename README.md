@@ -9,7 +9,7 @@
 
 
 
-O **Estúdio Bela** é uma plataforma web desenvolvida como parte do Projeto Integrador da **Univesp**, voltada para oferecer um ecossistema digital completo, seguro e modular.
+O [Estúdio Bela](https://estudio-bela-f8ui.vercel.app/inicio) é uma plataforma web desenvolvida como parte do Projeto Integrador da **Univesp**, voltada para oferecer um ecossistema digital completo, seguro e modular.
 
 ---
 
