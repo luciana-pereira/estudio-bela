@@ -10,8 +10,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",
-        "https://pi-mariah-estudio-back.onrender.com"
+        "*",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -29,7 +28,9 @@ def seed_roles():
     db.commit()
     db.close()
 
-seed_roles()
+@app.on_event("startup")
+def startup_event():
+    seed_roles()
 
 app.include_router(user_routes.router, prefix="/users", tags=["users"])
 app.include_router(auth_routes.router, prefix="/auth", tags=["auth"])
@@ -38,12 +39,12 @@ app.include_router(auth_routes.router, prefix="/auth", tags=["auth"])
 def read_root():
     return {"message": "API Espaço Bela está funcionando!"}
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(
-        "app.main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True
-    )
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run(
+#         "app.main:app",
+#         host="0.0.0.0",
+#         port=8000,
+#         reload=True
+#     )
 

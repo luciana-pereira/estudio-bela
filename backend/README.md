@@ -63,7 +63,11 @@ Para rodar o projeto, siga os passos abaixo:
 7. Rode a aplicação localmente:
    
    ```bash
-   python3 -m app.main
+   python3 -m app.main 
+
+   ou
+
+   uvicorn app.main:app --reload
 
 
 ## Funcionalidades
