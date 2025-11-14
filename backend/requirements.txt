@@ -45,11 +45,12 @@ uvicorn==0.30.6
 watchfiles==0.24.0
 websockets==12.0
 PyJWT
-passlib[bcrypt]==1.7.5
+passlib==1.7.4
 bcrypt==4.0.1
 psycopg2-binary
 python-jose
 supabase==2.3.4
+
 
 
 
