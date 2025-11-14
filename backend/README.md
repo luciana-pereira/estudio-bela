@@ -1,6 +1,6 @@
 # Espaço Bela | Back End
 
-## Indice
+## :page_facing_up: Indice
 1. [Introdução](#introdução)
 2. [Pré-requisitos](#pré-requisitos)
 3. [Executar Projeto](#executar-projeto)
@@ -147,10 +147,13 @@ Para rodar o projeto, siga os passos abaixo:
   - **Resposta**:
     - **200 OK**: E-mail de Recuperação enviado.
     - **404 Not Found**: E-mail não encontrado.
+      
+---
+Para ver a documentação completa abaixo no **Swagger** acesse _**[Swagger UI](https://estudio-bela.vercel.app/docs)**_ 
 
-Para ver a documentação completa no Swagger UI acesse _**[Swagger UI](https:///docs)**_ ou _**[OpenAPI]()**_
+<img width="1865" height="971" alt="image" src="https://github.com/user-attachments/assets/c33e68a2-9cbe-4ceb-8cdd-918112b36595" />
 
-
+---
 ## Estrutura 
    ```bash
   backend/
