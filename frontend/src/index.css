@@ -2,6 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
+@font-face {
+  font-family: 'OpenDyslexic';
+  /* O caminho agora é relativo: ./ */
+  src: url('./fonts/OpenDyslexic-Regular.woff2') format('woff2'),
+       url('./fonts/OpenDyslexic-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  /* O caminho agora é relativo: ./ */
+  src: url('./fonts/OpenDyslexic-Italic.woff2') format('woff2'),
+       url('./fonts/OpenDyslexic-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -11,4 +27,54 @@ body {
 
 code {
   font-family: "Poppins", sans-serif;
+}
+
+/* -- Tamanhos de Fonte -- */
+html.font-large {
+  font-size: 115%; /* Isso agora mudará o valor de 1rem */
+}
+html.font-small {
+  font-size: 90%; /* Diminui todo o texto do site */
+}
+
+/* * AQUI ESTÁ A OUTRA CORREÇÃO:
+ * Mudei de 'body.readable-font' para 'html.readable-font'
+ * para bater com o seu arquivo AccessibilityMenu.tsx
+*/
+html.readable-font * {
+  font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
+/* -- Cores e Contraste -- */
+body.grayscale {
+  filter: grayscale(100%);
+}
+body.high-contrast * {
+  background-color: #000 !important;
+  color: #FFF !important;
+  border-color: #FFF !important; /* Garante que bordas também mudem */
+}
+/* No alto contraste, força links e botões a terem estilos visíveis */
+body.high-contrast a,
+body.high-contrast button,
+body.high-contrast svg {
+  background-color: transparent !important; /* Remove o fundo preto de botões/links */
+  color: #FFFF00 !important; /* Cor de destaque amarela */
+  border: 1px solid #FFFF00 !important;
+}
+
+/* * REGRA 3: Garante que imagens fiquem visíveis (opcional, mas recomendado)
+ * O 'filter' vai inverter as cores da imagem, o que ajuda na visualização.
+*/
+body.high-contrast img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+body.negative-contrast {
+  filter: invert(100%) hue-rotate(180deg);
+}
+
+/* -- Links -- */
+body.links-underline a {
+  text-decoration: underline !important;
 }
