@@ -4,12 +4,13 @@
 1. [Introdução](#introdução)
 2. [Pré-requisitos](#pré-requisitos)
 3. [Executar Projeto](#executar-projeto)
-4. [Funcionalidades](#funcionalidades)
-5. [Endpoints](#endpoints)
-6. [Estrutura](#estrutura)
-7. [Contribuindo](#contribuindo)
-8. [Licença](#licença)
-9. [Contato](#contato)
+4. [Testes e Banco de Dados de Teste](#testes-e-banco-de-dados-de-teste)
+5. [Funcionalidades](#funcionalidades)
+6. [Endpoints](#endpoints)
+7. [Estrutura](#estrutura)
+8. [Contribuindo](#contribuindo)
+9. [Licença](#licença)
+10. [Contato](#contato)
 
 ## Introdução
 
@@ -21,10 +22,44 @@ O projeto utiliza:
 
 ## Pré-requisitos
 
-Antes de começar, certifique-se de ter os seguintes requisitos atendidos:
+Antes de começar, verifique se você possui:
 
-- Verifique se tem o [GIT](https://git-scm.com/) na maquina no Terminal (CMD/PowerShell), com o comando _**git --version**_,  se não tiver, instale com o [Link](https://git-scm.com/downloads) na maquina, feche e abra o Terminal (CMD/PowerShell), para verificar se a instalçao foi bem sucedida com o comando _**git --version**_ e verificar se possui as demais versões abaixo.
-- Verifique se tem o [Python](https://www.python.org) no Git Bash com o comando _**python --version**_ ou _**python3 --version**_, se não tiver, baixe no [link](https://www.python.org/downloads/) feche e abra o Git Bash e verifique se a instalçao foi bem sucedida com o _**python --version**_ ou _**python3 --version**_.
+- [GIT](https://git-scm.com/) na maquina no Terminal (CMD/PowerShell), com o comando _**git --version**_,  se não tiver, instale com o [Link](https://git-scm.com/downloads) na maquina, feche e abra o Terminal (CMD/PowerShell), para verificar se a instalçao foi bem sucedida com o comando _**git --version**_ e verificar se possui as demais versões abaixo.
+- [Python](https://www.python.org) no Git Bash com o comando _**python --version**_ ou _**python3 --version**_, se não tiver, baixe no [link](https://www.python.org/downloads/) feche e abra o Git Bash e verifique se a instalçao foi bem sucedida com o _**python --version**_ ou _**python3 --version**_.
+- [pip](https://pip.pypa.io/en/stable/) na maquina no Terminal (CMD/PowerShell), com o comando _**pip --version**_,  se não tiver, instale
+- [Docker](https://www.docker.com/) na maquina no Terminal (CMD/PowerShell/Ubuntu), com o comando _**docker --version**_,  se não tiver, instale
+- [docker-compose](https://docs.docker.com/compose/) na maquina no Terminal (CMD/PowerShell/Ubuntu), com o comando _**docker-compose --version**_
+
+Caso não possua algum deles, siga os links acima para instalação. O projeto também possui um script que automatiza parte dessas verificações (setup_tests.py).
+
+## Instalação e Preparação do Ambiente
+O projeto inclui scripts para automatizar:
+
+- Criação do ambiente virtual
+- Instalação de dependências
+- Criação do arquivo .env.test
+- Verificação e criação do container PostgreSQL para testes
+
+Para rodar tudo automaticamente:
+
+  ```bash
+  python setup_tests.py
+
+  #ou
+
+  python3 setup_tests.py
+  ```
+Este script realiza:
+
+- Criação do ambiente virtual venv se não existir
+- Instalação do requirements.txt
+- Criação do .env.test com o banco de teste
+- Subida do container PostgreSQL de teste via Docker
+- Instalação do pytest e coverage caso não existam
+- Execução dos testes com cobertura
+
+⚠️ Importante: Docker precisa estar ativo no sistema antes de rodar este script.
+
 
 ## Executar Projeto
 
@@ -40,35 +75,52 @@ Para rodar o projeto, siga os passos abaixo:
    ```bash
    cd pi-estudio-bela/backend
 
-3. Crie o ambiente virtual para isolar as dependências, se já tiver criado pule para a etapa 5:
+3. Crie o ambiente virtual para isolar as dependências, se já tiver criado pule para a etapa 4:
 
    ```bash
    python -m venv venv
 
-4. Ative o ambiente
+4. Ative o ambiente ou se já tiver criado o ambiente, execute:
 
    ```bash
-   source venv/Scripts/activate
+    source venv/Scripts/activate   # Windows
+    # ou
+    . venv/Scripts/activate        # Linux/Mac
+   ```
 
-5. Se já tiver criado o ambiente, acesse:
-
-   ```bash
-   . venv/Scripts/activate
-
-6. Instale as dependencias:
+5. Instale as dependencias:
 
    ```bash
    pip install -r requirements.txt
 
-7. Rode a aplicação localmente:
+6. Rode a aplicação localmente:
    
-   ```bash
+  ```bash
    python3 -m app.main 
 
-   ou
+ # ou
 
    uvicorn app.main:app --reload
+   ```
 
+## Testes e Banco de Dados de Teste 🧪
+Este projeto utiliza Pytest e um banco de dados PostgreSQL exclusivo para testes, nenhum dado real (Neon) 
+é modificado durante a execução da suíte de testes.
+
+#### Automatização do Setup
+
+O script setup_tests.py faz:
+- Criação do .env.test se não existir
+- Subida do container PostgreSQL de teste
+- Instalação de dependências de teste (pytest, coverage)
+- Execução dos testes
+- Exibição da cobertura em percentual por arquivo no terminal
+
+O arquivo .env.test é gerado automaticamente pelo script setup_tests.py:
+
+```bash
+python setup_tests.py
+```
 
 ## Funcionalidades
 
