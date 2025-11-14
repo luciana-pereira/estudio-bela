@@ -1,0 +1,21 @@
+services:
+  postgres-test:
+    image: postgres:15
+    container_name: pg-test
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test_db
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U test"]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+    restart: always
+    volumes:
+      - pgtest_data:/var/lib/postgresql/data
+
+volumes:
+  pgtest_data:
