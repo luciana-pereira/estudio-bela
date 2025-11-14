@@ -45,7 +45,7 @@ const Login = () => {
 
   const onSubmit = async (formData: any) => {
     console.log(formData);
-    const API_URL = "https://pi-mariah-estudio-back.onrender.com";
+    const API_URL = "https://estudio-bela.vercel.app";
 
     try {
       const response = await fetch(`${API_URL}/auth/login`, {
@@ -295,5 +295,6 @@ const Login = () => {
     </Box>
   );
 };
+
 
 export default Login;
