@@ -6,16 +6,16 @@ from app.models.role import Role
 from sqlalchemy.orm import Session
 from contextlib import asynccontextmanager
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    seed_roles()
+    yield
 
-origins = [
-    "http://localhost:3000", 
-    "https://estudio-bela-f8ui.vercel.app",  # frontend em produção
-]
+app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,   
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -32,25 +32,9 @@ def seed_roles():
     db.commit()
     db.close()
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    yield
-
-app = FastAPI(lifespan=lifespan)
-
 app.include_router(user_routes.router, prefix="/users", tags=["users"])
 app.include_router(auth_routes.router, prefix="/auth", tags=["auth"])
 
 @app.get("/")
 def read_root():
     return {"message": "API Estudio Bela estÃ¡ funcionando!"}
-
-# if __name__ == "__main__":
-#     import uvicorn
-#     uvicorn.run(
-#         "app.main:app",
-#         host="0.0.0.0",
-#         port=8000,
-#         reload=True
-#     )
-
