@@ -25,6 +25,8 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@hookform/resolvers": "^2.8.8",
+    "yup": "^0.32.11",                
     "bootstrap-icons": "^1.11.3",
     "buffer": "^6.0.3",
     "date-fns": "^4.1.0",
