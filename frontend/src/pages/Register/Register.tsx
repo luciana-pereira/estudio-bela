@@ -119,8 +119,8 @@ const Register = () => {
           name: data.name,
           email: data.email,
           username: data.name,
-          hashed_password: data.password, 
-          role_id: 2,       
+          password: data.password,  
+          role: 2,
         }),
       });
 
@@ -155,7 +155,8 @@ const Register = () => {
         height: "100vh",
         justifyContent: "center",
         alignItems: "center",
-        overflow: "hidden",
+        // overflow: "hidden",
+        overflowY: "auto",
         color: 'white',
         background: 'linear-gradient(140deg, #D7C4A1 2%, #864A4A 83%)'
       }}
@@ -183,12 +184,12 @@ const Register = () => {
           width: { xs: "100%", md: "50%" },
           maxWidth: "600px",
           padding: { xs: "20px", md: "40px" },
-          overflowY: "auto",
+          // overflowY: "auto",
           height: "100vh",
         }}
       >
         <DynamicBreadcrumbs />
-        <Box sx={{ textAlign: "center" }}>
+        {/* <Box sx={{ textAlign: "center" }}>
           <img 
             src={LogoEstudioBela}
             style={{
@@ -198,13 +199,13 @@ const Register = () => {
             }} 
             alt="Logo contendo as palavras Estúdio de Bela." 
           />
-        </Box>
+        </Box> */}
 
         <Typography
           component="p"
           sx={{
             fontSize: { xs: "0.9rem", md: "1.2rem" },
-            mt: 1,
+            mt: 2,
             mb: 2,
             textAlign: "center"
           }}
@@ -357,7 +358,7 @@ const Register = () => {
                     stylesLabel={"label-register"} 
                     stylesInput={"input-register"} 
                     stylesError={undefined} 
-                    isPassword={true} 
+                    isPassword={false} 
                     ariaLabel={"E-mail"} 
                     error={!!errors.email} 
                     errorMsg={errors.email?.message || ''}
@@ -440,7 +441,4 @@ const Register = () => {
   );
 };
 
-
 export default Register;
-
-
