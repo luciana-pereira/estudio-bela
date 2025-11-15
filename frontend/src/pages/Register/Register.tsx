@@ -1,5 +1,5 @@
-import React from 'react';
-import { Controller, useForm } from "react-hook-form";
+import React, { FormEvent } from 'react';
+import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import DynamicBreadcrumbs from "../../components/DynamicBreadcrumbs/DynamicBreadcrumbs";
@@ -37,9 +37,10 @@ const validationSchema = yup.object({
 const Register = () => {
 
   const {
+    register,
     control,
     handleSubmit,
-    formState: { isValid },
+    formState: { errors, isValid },
   } = useForm<RegisterFormData>({
     mode: 'onChange',
     resolver: yupResolver(validationSchema),
@@ -53,7 +54,7 @@ const Register = () => {
     },
   });
 
-  const onSubmit = async (data: RegisterFormData) => {
+  const onSubmit: SubmitHandler<RegisterFormData> = async (data: RegisterFormData) => {
     const API_URL = "https://estudio-bela.vercel.app";
 
     try {
@@ -76,7 +77,6 @@ const Register = () => {
       console.error(err.message);
     }
   };
-
 
   const ButtonRegister = styled(Button)<ButtonProps>(() => ({
     color: "#B76E79",
@@ -144,19 +144,7 @@ const Register = () => {
             alt="Logo contendo as palavras Estúdio de Bela." 
           />
         </Box>
-        {/* <Typography
-          variant="h1"
-          component="h1"
-          sx={{ 
-            fontSize: { xs: "1.5rem", md: "1.8rem" }, 
-            mt: 2, 
-            mb: 4,
-            fontWeight: 'bold',
-            textAlign: "center" 
-          }}
-        >
-          Faça seu cadastro
-        </Typography> */}
+
         <Typography
           component="p"
           sx={{
