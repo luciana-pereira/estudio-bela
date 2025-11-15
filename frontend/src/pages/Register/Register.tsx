@@ -1,4 +1,5 @@
 import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
 import DynamicBreadcrumbs from "../../components/DynamicBreadcrumbs/DynamicBreadcrumbs";
 import Input from '../../components/Forms/Input/Input';
 import Button, { ButtonProps } from "@mui/material/Button";
@@ -13,14 +14,31 @@ import {
 import Ilustration from '../../assets/img/img-register.png';
 import LogoEstudioBela from '../../assets/img/logo-branca-estudio-bela.png';
 
+interface RegisterFormData {
+  name: string;
+  cpf: string;
+  dateOfBirth: string;
+  cellPhone: string;
+  password: string;
+}
+
+const validationSchema = yup.object({
+  name: yup.string().required('Nome é obrigatório'),
+  cpf: yup.string().required('CPF é obrigatório').matches(/^\d{11}$/, 'CPF deve conter 11 dígitos'),
+  dateOfBirth: yup.string().required('Data de nascimento é obrigatória'),
+  cellPhone: yup.string().required('Número de celular é obrigatório').matches(/^\d{11}$/, 'Celular deve conter 11 dígitos'),
+  password: yup.string().required('Senha é obrigatória').min(6, 'Senha deve ter no mínimo 6 caracteres'),
+});
+
 const Register = () => {
 
   const {
     control,
     handleSubmit,
     formState: { isValid },
-  } = useForm({
+  } = useForm<RegisterFormData>({
     mode: 'onChange',
+    resolver: yupResolver(validationSchema),
     defaultValues: {
       name: '',
       cpf: '',
@@ -30,7 +48,7 @@ const Register = () => {
     },
   });
 
-  const onSubmit = async (data: Object) => {
+  const onSubmit = async (data: RegisterFormData) => {
     const API_URL = "https://estudio-bela.vercel.app";
 
     try {
@@ -286,12 +304,12 @@ const Register = () => {
                   id={"password"} 
                   type={"text"} 
                   value={value} 
-                  name={password} 
+                  name={name} 
                   label={"Senha"} 
                   stylesLabel={"label-register"} 
                   stylesInput={"input-register"} 
                   stylesError={undefined} 
-                  isPassword={false} 
+                  isPassword={true} 
                   ariaLabel={"Senha"} 
                   error={false} 
                   errorMsg={""}
@@ -350,4 +368,5 @@ const Register = () => {
 
 
 export default Register;
+
 
