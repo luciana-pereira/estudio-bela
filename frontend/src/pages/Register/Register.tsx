@@ -119,8 +119,8 @@ const Register = () => {
           name: data.name,
           email: data.email,
           username: data.name,
-          password: data.password,  
-          role: 2,
+          hashed_password: data.password,  
+          role_id: 2,
         }),
       });
 
@@ -442,3 +442,4 @@ const Register = () => {
 };
 
 export default Register;
+

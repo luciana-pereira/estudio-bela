@@ -43,7 +43,6 @@ const FinancialReport: React.FC = () => {
   const [dataProdutoInicio, setDataProdutoInicio] = useState<Date | null>(null);
   const [dataProdutoFim, setDataProdutoFim] = useState<Date | null>(null);
 
-
   const exportToCSV = () => {
     const dadosParaExportar = [
       ...servicosFiltrados.map((s) => ({
@@ -101,7 +100,6 @@ const FinancialReport: React.FC = () => {
   
     doc.save("relatorio_financeiro.pdf");
   };
-  
   
   const produtosUnicos = Array.from(new Set(produtos.map((p) => p.nome)));
   const tiposUnicos = ["entrada", "saida"];
@@ -237,7 +235,6 @@ const FinancialReport: React.FC = () => {
                 </CardContent>
               </Card>
             </Grid>
-
 
           {/* Tabela de Serviços Prestados */}
           <Grid size={{ xs: 12 }}>
@@ -408,3 +405,4 @@ const FinancialReport: React.FC = () => {
 };
 
 export default FinancialReport;
+

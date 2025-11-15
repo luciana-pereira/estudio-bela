@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+embroimport React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -41,7 +41,7 @@ const Messages: React.FC = () => {
 //   const [mensagem, setMensagem] = useState<string[] | Mensagem>([""]);
   const [mensagens, setMensagens] = useState<Mensagem[]>([
     {
-      titulo: "Promoções de Setembro",
+      titulo: "Promoções de Dezembro",
       descricao: "Olá, gostaria de saber se há promoções esse mês.",
       profissional: "Amanda",
       lida: false,
@@ -94,7 +94,7 @@ const Messages: React.FC = () => {
 
   const avisos = [
     "✨ Promoção de hidratação capilar até o fim do mês!",
-    "📅 O salão estará fechado no feriado de 7 de setembro.",
+    "📅 O salão estará fechado no feriado de 20 de Novembro.",
     "🎉 Novas profissionais disponíveis para agendamentos de manicure.",
   ];
 
@@ -274,7 +274,6 @@ const Messages: React.FC = () => {
         </Paper>
       </Box>
 
-
         {/* Modal de confirmação */}
         <ConfirmationMessage
               open={modalOpen}
@@ -286,3 +285,4 @@ const Messages: React.FC = () => {
 };
 
 export default Messages;
+

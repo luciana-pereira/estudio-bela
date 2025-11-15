@@ -55,7 +55,7 @@ const profissionais: Profissional[] = [
 const horariosDisponiveis: HorarioDisponivel[] = [
   {
     profissionalId: 1, // Luca
-    data: "2025-08-22",
+    data: "2025-11-20",
     horarios: ["09:00", "10:00", "14:00"],
   },
   // {
@@ -65,7 +65,7 @@ const horariosDisponiveis: HorarioDisponivel[] = [
   // },
   {
     profissionalId: 3, // Renata
-    data: "2025-08-22",
+    data: "2025-11-22",
     horarios: ["13:00", "16:00"],
   },
 ];
@@ -103,7 +103,6 @@ const Scheduling: React.FC = () => {
       setHorariosFiltrados([]);
     }
   }, [profissionalSelecionado, dataSelecionada]);
-
 
 const resetFormulario = () => {
   setServicoSelecionado("");
@@ -250,7 +249,7 @@ const handleAgendar = () => {
                               >
                                 {horariosDisponiveis.filter((h) => h.profissionalId === profissionalSelecionado).length === 0 ? (
                                   <MenuItem disabled value="">
-                                    Sem datas disponíveis
+                                    Sem datas disponÃ­veis
                                   </MenuItem>
                                 ) : (
                                   horariosDisponiveis
@@ -272,7 +271,7 @@ const handleAgendar = () => {
                 {horariosFiltrados.length > 0 ? (
                   <Card>
                     <CardContent>
-                      <Typography variant="h6">Hor�rios dispon�veis:</Typography>
+                      <Typography variant="h6">Horários disponíveis:</Typography>
                       <Box display="flex" flexWrap="wrap" gap={1} mt={2}>
                         {horariosFiltrados.map((horario) => (
                           <Button
@@ -287,7 +286,7 @@ const handleAgendar = () => {
                     </CardContent>
                   </Card>
                 ) : (
-                  <Typography>Nenhum horário disponível para essa data.</Typography>
+                  <Typography>Nenhum horário disponível para esta data.</Typography>
                 )}
               </Grid>
             )}
@@ -388,3 +387,4 @@ const handleAgendar = () => {
 };
 
 export default Scheduling;
+

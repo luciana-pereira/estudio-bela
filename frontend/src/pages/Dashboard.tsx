@@ -40,8 +40,8 @@ const Dashboard: React.FC = () => {
   };
 
   const agendamentosFuturos: Agendamento[] = [
-    { id: 1, data: "2025-08-21", descricao: "Corte de cabelo" },
-    { id: 2, data: "2025-08-25", descricao: "Coloração" },
+    { id: 1, data: "2025-12-21", descricao: "Corte de cabelo" },
+    { id: 2, data: "2025-12-21", descricao: "Coloração" },
   ];
 
   const agendamentosPassados: Agendamento[] = [
@@ -105,7 +105,6 @@ const Dashboard: React.FC = () => {
                         </CardContent>
                     </Card>
                 </Grid>
-
 
                 <Grid>
                     <Card>
@@ -205,3 +204,4 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
+
