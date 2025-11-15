@@ -74,7 +74,13 @@ def main():
         sys.exit(1)
 
     console.print("[bold green][INFO][/bold green] Instalando dependências...")
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+    subprocess.run(
+        [sys.executable, "-m", "pip", "install", "-r", "requirements.txt", "-qqq"],
+        check=True
+    )
+    # subprocess.check_call([
+    #     sys.executable, "-m", "pip", "install", "-r", "requirements.txt", "-q"
+    # ])
 
     console.print("[bold green][INFO][/bold green] Subindo container PostgreSQL para testes...")
     subprocess.run(["docker-compose", "-f", "docker-compose.test.yml", "up", "-d"], check=True)
