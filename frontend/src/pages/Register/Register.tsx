@@ -1,4 +1,7 @@
+import React from 'react';
 import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import DynamicBreadcrumbs from "../../components/DynamicBreadcrumbs/DynamicBreadcrumbs";
 import Input from '../../components/Forms/Input/Input';
 import Button, { ButtonProps } from "@mui/material/Button";
@@ -13,28 +16,56 @@ import {
 import Ilustration from '../../assets/img/img-register.png';
 import LogoEstudioBela from '../../assets/img/logo-branca-estudio-bela.png';
 
+interface RegisterFormData {
+  name: string;
+  cpf: string;
+  dateOfBirth: string;
+  cellPhone: string;
+  email: string;
+  password: string;
+}
+
+const validationSchema = yup.object({
+  name: yup.string().required('Nome é obrigatório'),
+  cpf: yup.string().required('CPF é obrigatório').matches(/^\d{11}$/, 'CPF deve conter 11 dígitos'),
+  dateOfBirth: yup.string().required('Data de nascimento é obrigatória'),
+  cellPhone: yup.string().required('Número de celular é obrigatório').matches(/^\d{11}$/, 'Celular deve conter 11 dígitos'),
+  email: yup.string().required('E-mail é obrigatório').email('E-mail inválido'),
+  password: yup.string().required('Senha é obrigatória').min(6, 'Senha deve ter no mínimo 6 caracteres'),
+});
+
 const Register = () => {
 
   const {
     control,
     handleSubmit,
     formState: { isValid },
-  } = useForm({
+  } = useForm<RegisterFormData>({
     mode: 'onChange',
+    resolver: yupResolver(validationSchema),
     defaultValues: {
       name: '',
       cpf: '',
       dateOfBirth: '',
       cellPhone: '',
+      email: '',
+      password: '',
     },
   });
 
-  const onSubmit = async (data: Object) => {
+  const onSubmit = async (data: RegisterFormData) => {
+    const API_URL = "https://estudio-bela.vercel.app";
+
     try {
-      const response = await fetch('/users/', {
+      const response = await fetch(`${API_URL}/users/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          username: data.name,
+          hashed_password: data.password,        
+        }),
       });
 
       if (!response.ok) throw new Error('Erro ao registrar');
@@ -268,6 +299,58 @@ const Register = () => {
             }}
           />  
 
+          <Controller 
+              name='email'
+              control={control}
+              rules={{ required: true }}
+              render={({ field: { onChange, onBlur, value, name } }) => {
+                return (
+                  <Input 
+                    id={"email"} 
+                    type={"text"} 
+                    value={value} 
+                    name={name} 
+                    label={"E-mail"} 
+                    stylesLabel={"label-register"} 
+                    stylesInput={"input-register"} 
+                    stylesError={undefined} 
+                    isPassword={true} 
+                    ariaLabel={"E-mail"} 
+                    error={false} 
+                    errorMsg={""}
+                    onChange={onChange}
+                    onBlur={onBlur}                 
+                  />
+                )
+              }}
+            />
+
+          <Controller 
+              name='password'
+              control={control}
+              rules={{ required: true }}
+              render={({ field: { onChange, onBlur, value, name } }) => {
+                return (
+                  <Input 
+                    id={"password"} 
+                    type={"text"} 
+                    value={value} 
+                    name={name} 
+                    label={"Senha"} 
+                    stylesLabel={"label-register"} 
+                    stylesInput={"input-register"} 
+                    stylesError={undefined} 
+                    isPassword={true} 
+                    ariaLabel={"Senha"} 
+                    error={false} 
+                    errorMsg={""}
+                    onChange={onChange}
+                    onBlur={onBlur}                 
+                  />
+                )
+              }}
+            />
+
           <FormGroup sx={{ mt: 0.2, mb: 1 }}>
             <FormControlLabel 
               control={<Checkbox />} 
@@ -314,4 +397,7 @@ const Register = () => {
   );
 };
 
+
 export default Register;
+
+
