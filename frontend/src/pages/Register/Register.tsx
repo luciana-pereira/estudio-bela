@@ -31,7 +31,7 @@ const Register = () => {
 
   const onSubmit = async (data: Object) => {
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch('/users/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
