@@ -107,6 +107,9 @@ const Register = () => {
   const onSubmit: SubmitHandler<RegisterFormData> = async (data: RegisterFormData) => {
     if (!validateForm(data)) return;
 
+    console.log('Dados do formulário:', data);
+
+
     const API_URL = "https://estudio-bela.vercel.app";
 
     try {
@@ -117,7 +120,8 @@ const Register = () => {
           name: data.name,
           email: data.email,
           username: data.name,
-          hashed_password: data.password,        
+          hashed_password: data.password,  
+          role_id: 2,
         }),
       });
 
@@ -439,5 +443,6 @@ const Register = () => {
 
 
 export default Register;
+
 
 
