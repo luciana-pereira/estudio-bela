@@ -1,7 +1,5 @@
 import React, { FormEvent } from 'react';
 import { Controller, useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import DynamicBreadcrumbs from "../../components/DynamicBreadcrumbs/DynamicBreadcrumbs";
 import Input from '../../components/Forms/Input/Input';
 import Button, { ButtonProps } from "@mui/material/Button";
@@ -25,15 +23,6 @@ interface RegisterFormData {
   password: string;
 }
 
-const validationSchema = yup.object({
-  name: yup.string().required('Nome é obrigatório'),
-  cpf: yup.string().required('CPF é obrigatório').matches(/^\d{11}$/, 'CPF deve conter 11 dígitos'),
-  dateOfBirth: yup.string().required('Data de nascimento é obrigatória'),
-  cellPhone: yup.string().required('Número de celular é obrigatório').matches(/^\d{11}$/, 'Celular deve conter 11 dígitos'),
-  email: yup.string().required('E-mail é obrigatório').email('E-mail inválido'),
-  password: yup.string().required('Senha é obrigatória').min(6, 'Senha deve ter no mínimo 6 caracteres'),
-});
-
 const Register = () => {
 
   const {
@@ -41,9 +30,10 @@ const Register = () => {
     control,
     handleSubmit,
     formState: { errors, isValid },
+    setError,
+    clearErrors
   } = useForm<RegisterFormData>({
     mode: 'onChange',
-    resolver: yupResolver(validationSchema),
     defaultValues: {
       name: '',
       cpf: '',
@@ -54,7 +44,69 @@ const Register = () => {
     },
   });
 
+  const validateForm = (data: RegisterFormData) => {
+    let isValid = true;
+
+    if (!data.name) {
+      setError('name', { message: 'Nome é obrigatório' });
+      isValid = false;
+    } else {
+      clearErrors('name');
+    }
+
+    if (!data.cpf) {
+      setError('cpf', { message: 'CPF é obrigatório' });
+      isValid = false;
+    } else if (!/^\d{11}$/.test(data.cpf)) {
+      setError('cpf', { message: 'CPF deve conter 11 dígitos' });
+      isValid = false;
+    } else {
+      clearErrors('cpf');
+    }
+
+    if (!data.dateOfBirth) {
+      setError('dateOfBirth', { message: 'Data de nascimento é obrigatória' });
+      isValid = false;
+    } else {
+      clearErrors('dateOfBirth');
+    }
+
+    if (!data.cellPhone) {
+      setError('cellPhone', { message: 'Número de celular é obrigatório' });
+      isValid = false;
+    } else if (!/^\d{11}$/.test(data.cellPhone)) {
+      setError('cellPhone', { message: 'Celular deve conter 11 dígitos' });
+      isValid = false;
+    } else {
+      clearErrors('cellPhone');
+    }
+
+    if (!data.email) {
+      setError('email', { message: 'E-mail é obrigatório' });
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(data.email)) {
+      setError('email', { message: 'E-mail inválido' });
+      isValid = false;
+    } else {
+      clearErrors('email');
+    }
+
+    if (!data.password) {
+      setError('password', { message: 'Senha é obrigatória' });
+      isValid = false;
+    } else if (data.password.length < 6) {
+      setError('password', { message: 'Senha deve ter no mínimo 6 caracteres' });
+      isValid = false;
+    } else {
+      clearErrors('password');
+    }
+
+    return isValid;
+  };
+
   const onSubmit: SubmitHandler<RegisterFormData> = async (data: RegisterFormData) => {
+    if (!validateForm(data)) return;
+
     const API_URL = "https://estudio-bela.vercel.app";
 
     try {
@@ -178,8 +230,8 @@ const Register = () => {
                   stylesError={undefined} 
                   isPassword={false} 
                   ariaLabel={"Nome"} 
-                  error={false} 
-                  errorMsg={""}
+                  error={!!errors.name} 
+                  errorMsg={errors.name?.message || ''}
                   onChange={onChange}
                   onBlur={onBlur}                 
                 />
@@ -204,8 +256,8 @@ const Register = () => {
                   stylesError={undefined} 
                   isPassword={false} 
                   ariaLabel={"cpf"} 
-                  error={false} 
-                  errorMsg={""}
+                  error={!!errors.cpf} 
+                  errorMsg={errors.cpf?.message || ''}
                   onChange={onChange}
                   onBlur={onBlur}             
                 />
@@ -230,8 +282,8 @@ const Register = () => {
                   stylesError={undefined} 
                   isPassword={false} 
                   ariaLabel={"data De Nascimento"} 
-                  error={false} 
-                  errorMsg={""}
+                  error={!!errors.dateOfBirth} 
+                  errorMsg={errors.dateOfBirth?.message || ''}
                   onChange={onChange}
                   onBlur={onBlur}                 
                 />
@@ -278,8 +330,8 @@ const Register = () => {
                   stylesError={undefined} 
                   isPassword={false} 
                   ariaLabel={"Celular"} 
-                  error={false} 
-                  errorMsg={""}
+                  error={!!errors.cellPhone} 
+                  errorMsg={errors.cellPhone?.message || ''}
                   onChange={onChange}
                   onBlur={onBlur}                 
                 />
@@ -304,8 +356,8 @@ const Register = () => {
                     stylesError={undefined} 
                     isPassword={true} 
                     ariaLabel={"E-mail"} 
-                    error={false} 
-                    errorMsg={""}
+                    error={!!errors.email} 
+                    errorMsg={errors.email?.message || ''}
                     onChange={onChange}
                     onBlur={onBlur}                 
                   />
@@ -330,8 +382,8 @@ const Register = () => {
                     stylesError={undefined} 
                     isPassword={true} 
                     ariaLabel={"Senha"} 
-                    error={false} 
-                    errorMsg={""}
+                    error={!!errors.password} 
+                    errorMsg={errors.password?.message || ''}
                     onChange={onChange}
                     onBlur={onBlur}                 
                   />
