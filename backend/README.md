@@ -3,22 +3,35 @@
 ## :page_facing_up: Indice
 1. [Introdução](#introdução)
 2. [Pré-requisitos](#pré-requisitos)
-3. [Executar Projeto](#executar-projeto)
-4. [Testes e Banco de Dados de Teste](#testes-e-banco-de-dados-de-teste)
-5. [Funcionalidades](#funcionalidades)
-6. [Endpoints](#endpoints)
-7. [Estrutura](#estrutura)
-8. [Contribuindo](#contribuindo)
-9. [Licença](#licença)
-10. [Contato](#contato)
+3. [Instalação e Preparação do Ambiente](#instalação-e-preparação-do-ambiente)
+4. [Executar Projeto](#executar-projeto)
+5. [Testes e Banco de Dados de Teste](#testes-e-banco-de-dados-de-teste)
+6. [Funcionalidades](#funcionalidades)
+7. [Endpoints](#endpoints)
+8. [Estrutura](#estrutura)
+9. [Contribuindo](#contribuindo)
+10. [Licença](#licença)
+11. [Contato](#contato)
+
+---
 
 ## Introdução
 
-Este microserviço é responsavel por gerenciar usuários, administrados e outros profissionais. Ele oferece funcionalidades para criação, leitura, atualização e exclusão de perfis de usuários, bem como gerenciamento de autenticação e autorização.
+Este microserviço é responsável por gerenciar usuários, administradores e profissionais.
 
-O projeto utiliza:
+Principais funções:
+- CRUD de usuários
+- Autenticação e autorização
+- Gerenciamento de perfis
+
+Tecnologias:
 - **Python 3.x**
-- **Banco de Dados PostgreSQL**
+- **FastAPI**
+- **PostgreSQL**
+- **Docker & Docker Compose**
+- **Makefile para automação**
+
+---
 
 ## Pré-requisitos
 
@@ -30,10 +43,12 @@ Antes de começar, verifique se você possui:
 - [Docker](https://www.docker.com/) na maquina no Terminal (CMD/PowerShell/Ubuntu), com o comando _**docker --version**_,  se não tiver, instale
 - [docker-compose](https://docs.docker.com/compose/) na maquina no Terminal (CMD/PowerShell/Ubuntu), com o comando _**docker-compose --version**_
 
-Caso não possua algum deles, siga os links acima para instalação. O projeto também possui um script que automatiza parte dessas verificações (setup_tests.py).
+Caso não possua algum deles, siga os links acima para instalação. 
+
+--- 
 
 ## Instalação e Preparação do Ambiente
-O projeto inclui scripts para automatizar:
+O projeto possui automações via Makefile e Docker para simplificar a configuração.
 
 - Criação do ambiente virtual
 - Instalação de dependências
@@ -43,23 +58,87 @@ O projeto inclui scripts para automatizar:
 Para rodar tudo automaticamente:
 
   ```bash
-  python setup_tests.py
+  # Clonar repositório
+  git clone https://github.com/luciana-pereira/estudio-bela.git
+  cd pi-estudio-bela/backend
 
-  #ou
-
-  python3 setup_tests.py
+  # Criar e subir containers (API + DB)
+  make setup
   ```
-Este script realiza:
 
-- Criação do ambiente virtual venv se não existir
-- Instalação do requirements.txt
-- Criação do .env.test com o banco de teste
-- Subida do container PostgreSQL de teste via Docker
-- Instalação do pytest e coverage caso não existam
-- Execução dos testes com cobertura
+#### 📖 Cheat Sheet — Makefile & Docker
+
+🔧 Setup do ambiente
+- Atualiza o pip
+```bash
+make setup
+```
+Instala dependências do requirements.txt
+
+🐳 Containers
+```bash
+make up
+Sobe containers da aplicação e banco (via docker-compose.yml)
+
+```bash
+make down
+Derruba containers
+
+```bash
+make logs
+Exibe logs da aplicação em tempo real
+
+```bash
+make reset-db
+Derruba e recria containers de teste (docker-compose.test.yml)
+
+Útil para resetar banco de testes
+
+🧪 Testes
+```bash
+make test
+Cria/verifica .env.test automaticamente
+
+Executa Pytest em modo verboso
+
+Saída formatada e legível
+
+```bash
+make coverage
+Cria/verifica .env.test automaticamente
+
+Executa testes com Coverage
+
+Mostra relatório no terminal
+
+Gera relatório HTML em htmlcov/index.html
+
+🧹 Manutenção
+```bash
+make lint
+Executa Flake8 para verificar estilo e qualidade do código
+
+```bash
+make clean
+Remove caches e relatórios (__pycache__, .pytest_cache, .coverage, htmlcov)
+
+#### 📦 Comandos disponíveis no Makefile
+- make setup → Atualiza o pip e instala as dependências
+- make test → Executa os testes com Pytest e Coverage
+- make coverage → Roda os testes com Coverage para medir cobertura de código.
+- make lint → Executa Flake8 para verificar estilo e qualidade do código.
+- make clean → Remove arquivos temporários gerados por testes e execução:
+  - __pycache__ → bytecode Python.
+  - .pytest_cache → cache do Pytest.
+  - .coverage → arquivo de cobertura.
+  - htmlcov → relatório HTML de cobertura.
+- make up → Realiza a subida dos containers
+- make down → Derruba os containers
+- make logs → Mostra os logs da aplicação
+- make envtest → Cria o arquivo .env.test
+- make reset-db → Recria o banco de dados de desenvolvimento
 
 ⚠️ Importante: Docker precisa estar ativo no sistema antes de rodar este script.
-
 
 ## Executar Projeto
 
@@ -75,12 +154,23 @@ Para rodar o projeto, siga os passos abaixo:
    ```bash
    cd pi-estudio-bela/backend
 
-3. Crie o ambiente virtual para isolar as dependências, se já tiver criado pule para a etapa 4:
 
+Nesta etapa, podera executar o projeto:
+
+1. 🐳 Via Docker
+Desta forma a API estará disponível em: 👉 http://localhost:8000
+
+   ```bash
+   make up
+
+2. 💻 Localmente (sem Docker)
+Criando o ambiente virtual para isolar as dependências:
+
+bash
    ```bash
    python -m venv venv
 
-4. Ative o ambiente ou se já tiver criado o ambiente, execute:
+Ative o ambiente ou se já tiver criado o ambiente, execute:
 
    ```bash
     source venv/Scripts/activate   # Windows
@@ -88,12 +178,12 @@ Para rodar o projeto, siga os passos abaixo:
     . venv/Scripts/activate        # Linux/Mac
    ```
 
-5. Instale as dependencias:
+Instale as dependencias:
 
    ```bash
-   pip install -r requirements.txt
+   make setup
 
-6. Rode a aplicação localmente:
+Rode a aplicação
    
   ```bash
    python3 -m app.main 
@@ -103,24 +193,24 @@ Para rodar o projeto, siga os passos abaixo:
    uvicorn app.main:app --reload
    ```
 
+--- 
+
 ## Testes e Banco de Dados de Teste 🧪
-Este projeto utiliza Pytest e um banco de dados PostgreSQL exclusivo para testes, nenhum dado real (Neon) 
-é modificado durante a execução da suíte de testes.
+O projeto utiliza Pytest com um banco PostgreSQL exclusivo para testes.
 
-#### Automatização do Setup
-
-O script setup_tests.py faz:
-- Criação do .env.test se não existir
-- Subida do container PostgreSQL de teste
-- Instalação de dependências de teste (pytest, coverage)
-- Execução dos testes
-- Exibição da cobertura em percentual por arquivo no terminal
-
-O arquivo .env.test é gerado automaticamente pelo script setup_tests.py:
+#### Automatização
 
 ```bash
-python setup_tests.py
+make test
 ```
+
+Esse comando:
+- Criação do `.env.test` se não existir
+- Sobe container PostgreSQL de teste
+- Executa Pytest com Coverage
+- Exibe relatório de cobertura no terminal
+
+--- 
 
 ## Funcionalidades
 
@@ -130,12 +220,14 @@ python setup_tests.py
 - **Autorização**: Controlar o acesso baseado em papeis e permissões.
 - **Recuperação de Senha**: Permitir que usuários solicitem redefinição de senha.
 
+--- 
+
 ## Endpoints
 
 ### Cadastro de usuários
 
 - **POST** `/users`
-  - **Descrissão**: Cria um novo usuário.
+  - **Descrição**: Cria um novo usuário.
   - **Corpo da Requisição**:
     ```json
     {
@@ -201,18 +293,20 @@ python setup_tests.py
     - **404 Not Found**: E-mail não encontrado.
       
 ---
-Para ver a documentação completa abaixo no **Swagger** acesse _**[Swagger UI](https://estudio-bela.vercel.app/docs)**_ 
+
+👉 Documentação completa disponível em **Swagger** acesse _**[Swagger UI](https://estudio-bela.vercel.app/docs)**_ 
 
 <img width="1865" height="971" alt="image" src="https://github.com/user-attachments/assets/c33e68a2-9cbe-4ceb-8cdd-918112b36595" />
 
 ---
+
 ## Estrutura 
    ```bash
   backend/
   ├── app/                     # Código principal da aplicação
   │   ├── __init__.py          # Arquivo de inicialização do módulo
   │   ├── config.py            # Configurações da aplicação
-  │   ├── models/              # Modelos de dados
+  │   ├── models/              # Modelos de dados SQLAlchemy
   │   │   ├── __init__.py
   │   │   ├── user.py          # Modelo de usuário
   │   │   └── role.py          # Modelo de papel (role)
@@ -227,7 +321,8 @@ Para ver a documentação completa abaixo no **Swagger** acesse _**[Swagger UI](
   │   ├── utils/               # Utilitários e helpers
   │   │   ├── __init__.py
   │   │   └── token_utils.py   # Funções utilitárias para tokens
-  │   └── main.py              # Arquivo principal para execução da aplicação
+  │   ├── main.py              # Arquivo principal para execução da aplicação
+  │   └── schemas.py           # Schemas Pydantic
   │
   ├── tests/                   # Testes automatizados
   │   ├── __init__.py
@@ -243,42 +338,26 @@ Para ver a documentação completa abaixo no **Swagger** acesse _**[Swagger UI](
   ├── .gitignore               # Arquivos e diretórios a serem ignorados pelo Git
   ├── Dockerfile               # Dockerfile para containerização
   ├── docker-compose.yml       # Docker Compose para orquestração
+  ├── Makefile                 # Automação de tarefas
   ├── requirements.txt         # Dependências do Python
   ├── LICENSE                  # Licença do projeto
   ├── README.md                # Documentação do projeto
+  ├── alembic.ini              # Configuração de migrações
   └── setup.py                 # Script de instalação do projeto
 
 ```
-## Descrição dos diretórios e arquivos utilizados
-
-- **app/**: Contém o código principal da aplicação, incluindo modelos de dados, rotas, serviços e utilitários.
-  - **models/**: Define os modelos de dados usados pelo microserviço.
-  - **routes/**: Define as rotas e endpoints da API.
-  - **services/**: Contém a lógica de negócios e serviços que processam as requisições.
-  - **utils/**: Funções utilitárias, como helpers para manipulação de tokens.
-  - **main.py**: Ponto de entrada principal para executar a aplicação.
-- **tests/**: Contém os testes automatizados para garantir que o microserviço funcione conforme o esperado.
-  - **conftest.py**: Configuração para os testes.
-- **migrations/**: Scripts e arquivos para gerenciar a migração de banco de dados.
-- **.env**: Arquivo para variáveis de ambiente, como configurações de banco de dados e chaves de API.
-- **.gitignore**: Lista arquivos e diretórios que o Git deve ignorar.
-- **Dockerfile**: Define como o microserviço deve ser construído e executado em um container Docker.
-- **docker-compose.yml**: Define a configuração do Docker Compose para orquestrar múltiplos containers, se necessário.
-- **requirements.txt**: Lista as dependências do Python que precisam ser instaladas.
-- **LICENSE**: Arquivo de licença do projeto, por exemplo, Licença MIT.
-- **README.md**: Documentação geral do projeto, incluindo como configurar, executar e contribuir.
-- **setup.py**: Script para instalação do projeto como um pacote Python.
 
 ---
 
 ## Contribuição
 1. Faça um Fork do Repositório
-2. Crie uma Branch para sua Feature
-3. Adicione e Faça Commit das suas Alterações
-4. Envie um Pull Request
+2. Crie uma branch (git checkout -b feature/nova-feature)
+3. Commit suas alterações (git commit -m 'feat: nova feature')
+4. Push para a branch (git push origin feature/nova-feature)
+5. Abra um Pull Request
 
 ## Licença
-Este projeto está licenciado sob a Licença MIT - consulte o arquivo LICENSE para mais detalhes.
+Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
 
 ## Contato
 Para mais informações ou suporte, entre em contato com:
