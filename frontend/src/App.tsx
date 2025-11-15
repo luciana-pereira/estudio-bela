@@ -23,6 +23,7 @@ function App() {
         <BrowserRouter>
         <AccessibilityMenu />
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/inicio" element={<Home />} />
             <Route path="/inicio/login" element={<Login />} />
             <Route path="/inicio/cadastro" element={<Register />} />
