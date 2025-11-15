@@ -26,15 +26,23 @@ const Register = () => {
       cpf: '',
       dateOfBirth: '',
       cellPhone: '',
+      password: '',
     },
   });
 
   const onSubmit = async (data: Object) => {
+    const API_URL = "https://estudio-bela.vercel.app";
+
     try {
-      const response = await fetch('/users/', {
+      const response = await fetch(`${API_URL}/users/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          username: data.name,
+          hashed_password: data.password,        
+        }),
       });
 
       if (!response.ok) throw new Error('Erro ao registrar');
@@ -268,6 +276,32 @@ const Register = () => {
             }}
           />  
 
+        <Controller 
+            name='password'
+            control={control}
+            rules={{ required: true }}
+            render={({ field: { onChange, onBlur, value, name } }) => {
+              return (
+                <Input 
+                  id={"password"} 
+                  type={"text"} 
+                  value={value} 
+                  name={password} 
+                  label={"Senha"} 
+                  stylesLabel={"label-register"} 
+                  stylesInput={"input-register"} 
+                  stylesError={undefined} 
+                  isPassword={false} 
+                  ariaLabel={"Senha"} 
+                  error={false} 
+                  errorMsg={""}
+                  onChange={onChange}
+                  onBlur={onBlur}                 
+                />
+              )
+            }}
+          />
+
           <FormGroup sx={{ mt: 0.2, mb: 1 }}>
             <FormControlLabel 
               control={<Checkbox />} 
@@ -316,3 +350,4 @@ const Register = () => {
 
 
 export default Register;
+
