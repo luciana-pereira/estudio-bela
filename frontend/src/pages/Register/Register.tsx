@@ -358,7 +358,7 @@ const Register = () => {
                     stylesLabel={"label-register"} 
                     stylesInput={"input-register"} 
                     stylesError={undefined} 
-                    isPassword={true} 
+                    isPassword={false} 
                     ariaLabel={"E-mail"} 
                     error={!!errors.email} 
                     errorMsg={errors.email?.message || ''}
@@ -443,6 +443,7 @@ const Register = () => {
 
 
 export default Register;
+
 
 
 
