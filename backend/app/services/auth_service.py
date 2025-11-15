@@ -43,7 +43,7 @@ def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_
     user = db.query(models.User).filter(models.User.id == user_id).first()
     if user is None:
         raise credentials_exception
-    return schemas.User.from_orm(user)
+    return schemas.User.model_validate(user)
 
 def hash_password(password: str) -> str:
     salt = bcrypt.gensalt()

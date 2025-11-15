@@ -4,6 +4,7 @@ from app.routes import user_routes, auth_routes
 from app.config import engine, Base, SessionLocal
 from app.models.role import Role
 from sqlalchemy.orm import Session
+from contextlib import asynccontextmanager
 
 app = FastAPI()
 
@@ -28,9 +29,11 @@ def seed_roles():
     db.commit()
     db.close()
 
-@app.on_event("startup")
-def startup_event():
-    seed_roles()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    yield
+
+app = FastAPI(lifespan=lifespan)
 
 app.include_router(user_routes.router, prefix="/users", tags=["users"])
 app.include_router(auth_routes.router, prefix="/auth", tags=["auth"])

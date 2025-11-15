@@ -8,13 +8,17 @@ class User(BaseModel):
     email: str
     hashed_password: str
     role_id: int
+    
+    model_config = {
+        "from_attributes": True
+    }
 
 class UserCreate(BaseModel):
     name: str
     username: str
     email: EmailStr
-    password: str
-    role: int
+    hashed_password: str
+    role_id: int
 
 class UserUpdate(BaseModel):
     name: Optional[str] = None
@@ -45,3 +49,10 @@ class ResetPassword(BaseModel):
     email: EmailStr
     new_password: str
 
+class MockUser:
+    def __init__(self, id, name, email, hashed_password, role):
+        self.id = id
+        self.name = name
+        self.email = email
+        self.hashed_password = hashed_password
+        self.role = role

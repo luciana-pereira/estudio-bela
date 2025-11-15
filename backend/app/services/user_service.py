@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from fastapi import HTTPException
 from app.schemas import UserCreate, UserUpdate
 from app.models.user import User
 from app.models.role import Role
@@ -7,19 +8,24 @@ from app.utils import get_password_hash
 MAX_PASSWORD_LENGTH = 72
 
 def create_user(db: Session, user: UserCreate):
-    role = db.query(Role).filter(Role.id == user.role).first()
-    if not role:
-        raise ValueError("Role not found")
 
-    password = user.password[:MAX_PASSWORD_LENGTH]  
+    existing_user = db.query(User).filter(User.email == user.email).first()
+    if existing_user:
+        raise ValueError("Email já cadastrado")
+    
+    role = db.query(Role).filter(Role.id == user.role_id).first()
+    if not role:
+        raise HTTPException(status_code=400, detail="Role not found")
+
+    password = user.hashed_password[:MAX_PASSWORD_LENGTH]  
     hashed_password = get_password_hash(password)
     
     db_user = User(
+        name=user.name,
         username=user.username,
         email=user.email,
         hashed_password=hashed_password,
-        role_id=role.id,
-        name=user.name
+        role_id=user.role_id,
     )
     db.add(db_user)
     db.commit()
@@ -32,7 +38,7 @@ def get_user(db, user_id: int):
 def get_user_by_email(db: Session, email: str):
     return db.query(User).filter(User.email == email).first()
 
-def update_user(db: Session, user_id: int, user_update: UserUpdate):
+def update_user_service(db: Session, user_id: int, user_update: UserUpdate):
     user = db.query(User).filter(User.id == user_id).first()
     if not user:
         return None
