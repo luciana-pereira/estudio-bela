@@ -1,2 +1,64 @@
 backend/doc/*.mkv
 backend/doc/*.mkv
+
+# =========================
+# Arquivos grandes (LFS)
+# =========================
+*.mkv filter=lfs diff=lfs merge=lfs -text
+doc/*.mkv filter=lfs diff=lfs merge=lfs -text
+*.mp4
+*.avi
+*.mov
+
+# =========================
+# Ambientes e IDEs
+# =========================
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Node/Yarn
+# =========================
+node_modules/
+.yarn/
+.yarn-cache/
+.pnp.*
+.pnp.js
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.coverage
+.pytest_cache/
+htmlcov/
+
+# =========================
+# Logs e temporários
+# =========================
+*.log
+*.tmp
+*.bak
+*.DS_Store
+Thumbs.db
+
+# =========================
+# Docker
+# =========================
+*.pid
+*.seed
+*.pid.lock
+
+# =========================
+# Ambientes virtuais
+# =========================
+.env
+.env.*
+.venv/
+venv/
