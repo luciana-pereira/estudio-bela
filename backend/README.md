@@ -68,130 +68,109 @@ Para rodar tudo automaticamente:
 
 #### 📖 Cheat Sheet — Makefile & Docker
 
-🔧 Setup do ambiente
+**🔧 Setup do ambiente**
 - Atualiza o pip
+- Instala dependências do **requirements.txt (Produção)**
 ```bash
 make setup
 ```
-Instala dependências do requirements.txt
+- Instala dependências do **requirements-dev.txt (Desenvolovimento-local)** 
+```bash
+make setup-dev
+```
 
-🐳 Containers
+**🐳 Containers**
+- Sobe containers da aplicação e banco (via docker-compose.yml)
 ```bash
 make up
-Sobe containers da aplicação e banco (via docker-compose.yml)
-
+```
+- Derruba containers
 ```bash
 make down
-Derruba containers
-
+```
+- Exibe logs da aplicação em tempo real
 ```bash
 make logs
-Exibe logs da aplicação em tempo real
-
+```
+- Derruba e recria containers de teste (docker-compose.test.yml)
+- Útil para resetar banco de testes
 ```bash
 make reset-db
-Derruba e recria containers de teste (docker-compose.test.yml)
-
-Útil para resetar banco de testes
-
-🧪 Testes
+```
+**🧪 Testes**
+- Cria/verifica .env.test automaticamente
+- Executa Pytest em modo verboso
+- Saída formatada e legível
 ```bash
 make test
-Cria/verifica .env.test automaticamente
-
-Executa Pytest em modo verboso
-
-Saída formatada e legível
-
+```
+- Executa testes com Coverage
+- Mostra relatório no terminal
+- Gera relatório HTML em htmlcov/index.html
 ```bash
 make coverage
-Cria/verifica .env.test automaticamente
+```
 
-Executa testes com Coverage
-
-Mostra relatório no terminal
-
-Gera relatório HTML em htmlcov/index.html
-
-🧹 Manutenção
+**🧹 Manutenção**
+- Executa Flake8 para verificar estilo e qualidade do código
 ```bash
 make lint
-Executa Flake8 para verificar estilo e qualidade do código
-
-```bash
-make clean
-Remove caches e relatórios (__pycache__, .pytest_cache, .coverage, htmlcov)
-
-#### 📦 Comandos disponíveis no Makefile
-- make setup → Atualiza o pip e instala as dependências
-- make test → Executa os testes com Pytest e Coverage
-- make coverage → Roda os testes com Coverage para medir cobertura de código.
-- make lint → Executa Flake8 para verificar estilo e qualidade do código.
-- make clean → Remove arquivos temporários gerados por testes e execução:
+```
+- Remove caches e relatórios temporários gerados por testes e execução :
   - __pycache__ → bytecode Python.
   - .pytest_cache → cache do Pytest.
   - .coverage → arquivo de cobertura.
   - htmlcov → relatório HTML de cobertura.
-- make up → Realiza a subida dos containers
-- make down → Derruba os containers
-- make logs → Mostra os logs da aplicação
-- make envtest → Cria o arquivo .env.test
-- make reset-db → Recria o banco de dados de desenvolvimento
-
+```bash
+make clean
+```
 ⚠️ Importante: Docker precisa estar ativo no sistema antes de rodar este script.
 
-## Executar Projeto
+---
 
+## Executar Projeto
 Para rodar o projeto, siga os passos abaixo:
 
 1. Clone o repositório (se já não tiver feito):
-
    ```bash
    git clone https://github.com/luciana-pereira/estudio-bela.git
 
 2. Navegue até o diretório do projeto:
-
    ```bash
    cd pi-estudio-bela/backend
-
 
 Nesta etapa, podera executar o projeto:
 
 1. 🐳 Via Docker
 Desta forma a API estará disponível em: 👉 http://localhost:8000
-
-   ```bash
-   make up
-
+ ```bash
+ make up
+```
 2. 💻 Localmente (sem Docker)
 Criando o ambiente virtual para isolar as dependências:
-
-bash
-   ```bash
-   python -m venv venv
-
+```bash
+python -m venv venv
+```
 Ative o ambiente ou se já tiver criado o ambiente, execute:
 
-   ```bash
-    source venv/Scripts/activate   # Windows
-    # ou
-    . venv/Scripts/activate        # Linux/Mac
-   ```
+ ```bash
+  source venv/Scripts/activate   # Windows
+  # ou
+  . venv/Scripts/activate        # Linux/Mac
+ ```
 
 Instale as dependencias:
+ ```bash
+ make setup
+```
+Rode a aplicação  
+```bash
+ python3 -m app.main 
 
-   ```bash
-   make setup
+# ou
 
-Rode a aplicação
-   
-  ```bash
-   python3 -m app.main 
-
- # ou
-
-   uvicorn app.main:app --reload
-   ```
+ uvicorn app.main:app --reload
+ ```
 
 --- 
 
@@ -203,10 +182,14 @@ O projeto utiliza Pytest com um banco PostgreSQL exclusivo para testes.
 ```bash
 make test
 ```
-
 Esse comando:
 - Criação do `.env.test` se não existir
 - Sobe container PostgreSQL de teste
+
+```bash
+make coverage
+```
+Esse comando:
 - Executa Pytest com Coverage
 - Exibe relatório de cobertura no terminal
 
