@@ -249,7 +249,7 @@ const handleAgendar = () => {
                               >
                                 {horariosDisponiveis.filter((h) => h.profissionalId === profissionalSelecionado).length === 0 ? (
                                   <MenuItem disabled value="">
-                                    Sem datas disponÃ­veis
+                                    Sem datas disponíveis
                                   </MenuItem>
                                 ) : (
                                   horariosDisponiveis
