@@ -8,12 +8,16 @@ ifeq ($(PYTHON),)
 $(error Nenhum comando Python encontrado! Instale python3, python ou py.)
 endif
 
-.PHONY: setup test coverage clean lint up down logs envtest reset-db
+.PHONY: setup setup-dev test coverage clean lint up down logs envtest reset-db
 
-# Instala dependências
+# Instala dependências de produção
 setup:
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
+
+# Instala dependências de desenvolvimento
+setup-dev: setup
+	$(PYTHON) -m pip install -r requirements-dev.txt
 
 # Cria .env.test se não existir
 envtest:

@@ -42,7 +42,7 @@ typing_extensions==4.12.2
 tzdata==2024.1
 ujson==5.10.0
 uvicorn==0.30.6
-# uvloop==0.20.0
+# uvloop==0.20.0   # opcional, pode dar erro em alguns ambientes
 watchfiles==0.24.0
 websockets==12.0
 PyJWT
@@ -50,8 +50,3 @@ passlib==1.7.4
 bcrypt==4.0.1
 psycopg2-binary
 python-jose
-pytest
-pytest-cov
-pytest-asyncio
-coverage
-rich

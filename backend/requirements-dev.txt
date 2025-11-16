@@ -1,0 +1,20 @@
+# Testes
+pytest==8.3.3
+pytest-cov==5.0.0
+pytest-asyncio
+coverage
+
+# Ferramentas de lint e formatação
+flake8==7.3.0
+black==24.10.0
+isort==5.13.2
+
+# Tipagem e checagem estática
+mypy==1.11.2
+types-requests==2.31.0.20240907
+
+# Segurança e qualidade
+bandit==1.7.9
+
+# Documentação e utilitários
+sphinx==7.1.2
