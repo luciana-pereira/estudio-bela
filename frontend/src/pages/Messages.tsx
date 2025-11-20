@@ -1,4 +1,4 @@
-embroimport React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -41,14 +41,14 @@ const Messages: React.FC = () => {
 //   const [mensagem, setMensagem] = useState<string[] | Mensagem>([""]);
   const [mensagens, setMensagens] = useState<Mensagem[]>([
     {
-      titulo: "Promoções de Dezembro",
-      descricao: "Olá, gostaria de saber se há promoções esse mês.",
+      titulo: "PromoÃ§Ãµes de Dezembro",
+      descricao: "OlÃ¡, gostaria de saber se hÃ¡ promoÃ§Ãµes esse mÃªs.",
       profissional: "Amanda",
       lida: false,
     },
     {
-      titulo: "Confirmação de horário",
-      descricao: "Bom dia! Confirmei meu horário para sexta-feira.",
+      titulo: "ConfirmaÃ§Ã£o de horÃ¡rio",
+      descricao: "Bom dia! Confirmei meu horÃ¡rio para sexta-feira.",
       profissional: "Carlos",
       lida: false,
     },
@@ -60,7 +60,7 @@ const Messages: React.FC = () => {
     },
     {
       titulo: "Cancelamento",
-      descricao: "Preciso cancelar meu horário de amanhã.",
+      descricao: "Preciso cancelar meu horÃ¡rio de amanhÃ£.",
       profissional: "",
       lida: true,
     }
@@ -93,9 +93,9 @@ const Messages: React.FC = () => {
   };
 
   const avisos = [
-    "✨ Promoção de hidratação capilar até o fim do mês!",
-    "📅 O salão estará fechado no feriado de 20 de Novembro.",
-    "🎉 Novas profissionais disponíveis para agendamentos de manicure.",
+    "âœ¨ PromoÃ§Ã£o de hidrataÃ§Ã£o capilar atÃ© o fim do mÃªs!",
+    "ðŸ“… O salÃ£o estarÃ¡ fechado no feriado de 20 de Novembro.",
+    "ðŸŽ‰ Novas profissionais disponÃ­veis para agendamentos de manicure.",
   ];
 
   const [user, setUser] = useState<{
@@ -113,7 +113,7 @@ const Messages: React.FC = () => {
       const avatarUrl = parsedUser.avatar || Avatar;
 
       setUser({
-        nome: parsedUser.name || "Usuário",
+        nome: parsedUser.name || "UsuÃ¡rio",
         avatarUrl: avatarUrl,
         type: parsedUser.role_id === 1 ? "adm" : "cliente",
       });
@@ -134,10 +134,10 @@ const Messages: React.FC = () => {
           Avisos e Mensagens
         </Typography>
 
-        {/* Seção de Avisos */}
+        {/* SeÃ§Ã£o de Avisos */}
         <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
           <Typography variant="h6" gutterBottom>
-            Avisos do Salão
+            Avisos do SalÃ£o
           </Typography>
           <List>
             {avisos.map((aviso, index) => (
@@ -197,7 +197,7 @@ const Messages: React.FC = () => {
 
         <Divider sx={{ my: 2 }} />
 
-        {/* Seção de Mensagens */}
+        {/* SeÃ§Ã£o de Mensagens */}
         {/* <Paper elevation={3} sx={{ p: 3 }}>
           <Typography variant="h6" gutterBottom>
             Mensagens
@@ -230,20 +230,20 @@ const Messages: React.FC = () => {
           </Box>
         </Paper> */}
 
-     {/* Formulário de envio */}
+     {/* FormulÃ¡rio de envio */}
      <Paper elevation={3} sx={{ p: 3 }}>
           <Typography variant="h6" gutterBottom>
             Nova Mensagem
           </Typography>
           <Box display="flex" flexDirection="column" gap={2}>
             <TextField
-              label="Título"
+              label="TÃ­tulo"
               value={titulo}
               onChange={(e) => setTitulo(e.target.value)}
               fullWidth
             />
             <TextField
-              label="Descrição"
+              label="DescriÃ§Ã£o"
               multiline
               rows={4}
               value={descricao}
