@@ -1,0 +1,34 @@
+name: Integracao Continua (CI) - Estudio Bela
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  testes-automatizados:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Puxar o Código
+        uses: actions/checkout@v3
+
+      - name: 🐳 Subir o Banco de Dados de Teste
+        run: docker-compose up -d postgres-test
+
+      - name: 🐍 Configurar Python (Backend)
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: ⚙️ Rodar Testes do Backend
+        run: make tests
+
+      - name: 🟢 Configurar Node.js (Frontend)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: ⚛️ Rodar Testes do Frontend
+        run: yarn test
